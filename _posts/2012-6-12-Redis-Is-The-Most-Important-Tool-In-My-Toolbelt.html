@@ -5,7 +5,7 @@ title: "Redis Is The Most Important Tool In My Toolbelt"
 
 <p>I remember being a kid and getting my first swiss army knife. I suddenly found myself facing daily problems for which one of the attachments was the perfect solution. It's not that the problems I faced were somehow different, nor that they were unsolvable before. Rather, I now had simple tools that were often a better fit.</p>
 
-<p>Fast-forward to today and I find myself using Redis in much the same way. I just cannot overstate how useful and simple it is to use. Like a swiss army knife, if you are looking at Redis trying to understand what unique problem is solves, then you'll probably miss its true beauty. There isn't anything you can do in Redis that you can't do using something else. Conversely, there are many things that aren't a good fit for Redis. The joy of Redis is how simple and intuitive some things are to do. It's also worth mentioning that it has well-documented, predictable and insane performance characteristics.</p>
+<p>Fast-forward to today and I find myself using Redis in much the same way. I just cannot overstate how useful and simple it is to use. Like a swiss army knife, if you are looking at Redis trying to understand what unique problem is solves, then you'll probably miss its true beauty. There isn't anything you can do in Redis that you can't do using something else. The joy of Redis is how simple and intuitive some things are to do. It's also worth mentioning that it has well-documented, predictable and insane performance characteristics.</p>
 
 <p>Every project and every organization should have Redis servers available for developers to leverage. Sometimes you'll use Redis for  very specific purposes. For example, core parts of <a href="http://mogade.com">mogade</a> use Redis for ranking and statistics. But once the server is there, you'll find all types of good reasons to make use of it.</p>
 
@@ -13,7 +13,7 @@ title: "Redis Is The Most Important Tool In My Toolbelt"
 
 <p>It's also a great way to share information and state across servers or components. I was recently pointed to <a href="https://github.com/jamesgolick/rollout">this project that lets you control feature rollouts</a> using Redis. Of course, that's just one of countless examples you could come up with.</p>
 
-<p>If you need to do real time statistics, especially for more basic things, Redis is an obvious choice. It's fast and dead simple to use. <a href="http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/">Here's a cool example</a> of how some people are using Redis for stats.</p>
+<p>If you need to do real time statistics, Redis is an obvious choice. It's fast and dead simple to use. <a href="http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/">Here's a cool example</a> of how some people are using Redis for stats.</p>
 
 <p>When I released <a href="http://codingintro.com">The Little Introduction To Programming</a>, I used Redis' sets to track email registration: <code>redis.sadd(params[:email])</code>. That's all there was to it</p>
 
