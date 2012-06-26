@@ -48,9 +48,9 @@ app.get '/', (req, res) ->
   res.send('hello world')
 </pre>
 
-<p>On line 4 we tell express to enabling it's routing, and then get use the <code>get</code> and <code>post</code> methods (to name a few) to define our routes.</p>
+<p>On line 4 we tell express to enable its routing, and then use the <code>get</code> and <code>post</code> methods (to name a few) to define our routes.</p>
 
-<p>Taking a baby step, if we wanted to extract our route into it's own file, we could do:</p>
+<p>Taking a baby step, if we wanted to extract our route into its own file, we could do:</p>
 
 <pre data-language="ruby">
 # routes.coffee
@@ -66,7 +66,7 @@ app.configure ->
 require('./routes')(app)
 </pre>
 
-<p>There are a couple weird things going on here. First, our <code>exports</code> isn't doing anything other than exporting a function that takes a single parameter. Secondly, our require is loading that function and executing it. We could have rewritten the relevant parts more verbosely as:</p>
+<p>The syntax might be strange, but there's nothing new here. First, our <code>exports</code> isn't doing anything other than exporting a function that takes a single parameter. Secondly, our require is loading that function and executing it. We could have rewritten the relevant parts more verbosely as:</p>
 
 
 <pre data-language="ruby">
@@ -89,7 +89,7 @@ module.exports = (app) ->
   require('./portal')(app)
 </pre>
 
-<p>When you tell node.js to require a folder, it automatically loads its index file. With the above, we our initial route loading remains untouched: <code>require('./routes')(app)</code>. Now, this loading code doesn't just include <code>routes/index.coffe</code> it actually executes it (it's calling the function and passing in the <code>app</code> as an argument). All our routes function does is load and execute more functions.</p>
+<p>When you tell node.js to require a folder, it automatically loads its index file. With the above, our initial route loading remains untouched: <code>require('./routes')(app)</code>. Now, this loading code doesn't just include <code>routes/index.coffe</code> it actually executes it (it's calling the function and passing in the <code>app</code> as an argument). All our routes function does is load and execute more functions.</p>
 
 <p>For both our API and portal, we can do the same thing we did for routes:</p>
 
@@ -144,7 +144,7 @@ module.exports =
   signed: signed
 </pre>
 
-<p>Since we now exporting a hash rather than a function, our <code>routes/index.coffee</code> file also needs to change:
+<p>Since we are now exporting a hash rather than a function, our <code>routes/index.coffee</code> file also needs to change:
 
 <pre data-language="ruby">
 # OLD routes/index.coffee
@@ -209,4 +209,4 @@ module.exports = Scores.routes
 
 <p>And that, is that. There's a lot going on in all of this, but the key takeaway is that you can export anything and that flexibility can lead to some fairly well organized code. You can also leverage the fact that the <code>index</code> file is automatically loaded when its folder is required to keep things nice and clean.</p>
 
-<p>I know this jumped all over the place, but hopefully you'll find it helpful nonetheless!</p>
+<p>I know this jumped all over the place, but hopefully you'll find it helpful!</p>
