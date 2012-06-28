@@ -139,7 +139,7 @@ title: "Data Modeling In Redis"
 
 <p>While fast, it won't be as fast as <code>hmget/mget</code>. Some initial benchmark showed it to be ~2x slower in Ruby. The node version, while faster in all other tests, struggled massively with this multi-query approach. I suspect that 20 000 000 asynchronous fetches is beyond the node's driver capability to gracefully handle.</p>
 
-<p>2x slower might seem bad. But we are literally talking about microseconds. Users won't be able to tell the difference between 1 microsecond and 2 microseconds. And, CPU is cheaper to scale and memory. So, if I did rebuild this, I'd strongly consider this last approach for my specific needs.</p>
+<p>2x slower might seem bad. But we are literally talking about microseconds. Users won't be able to tell the difference between 1 microsecond and 2 microseconds. And, CPU is cheaper to scale than memory. So, if I did rebuild this, I'd strongly consider this last approach for my specific needs.</p>
 
 <p>Finally, in Redis 2.6 we can leverage lua scripting to implement our own command which will act similar to <code>mget</code> and <code>hmget</code>, but across different keys:</p>
 
