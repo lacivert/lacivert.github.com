@@ -45,7 +45,7 @@ console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
 <p>There's another way to expose things in a module:</p>
 
 <pre data-language="javascript">
-var User = new function(name, email) {
+var User = function(name, email) {
   this.name = name;
   this.email = email;
 };
