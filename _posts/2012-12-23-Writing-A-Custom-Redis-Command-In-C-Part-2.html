@@ -64,9 +64,9 @@ title: "Writing a Custom Redis Command In C - Part 2"
   setDeferredMultiBulkLength(c, replylen, added);
 </pre>
 
-<p>And that, dear reader, is a simple (and very tailored) implementation of xdiff. There's all types of ways to improve this. We could add an <code>order</code> parameter or implement something like <code>sort's</code> <code>GET</code> feature. We could also improve the performance. Given an <code>offset</code> greater than zero, we could skip the first <code>offset</code> records (which is exactly what <code>sort</code> does via the <code>zslGetElementByRank</code> function).</p>
+<p>And that, dear reader, is a simple (and very tailored) implementation of xdiff. There's all types of ways to improve this. We could add an <code>order</code> parameter or implement something like <code>sort's</code> <code>GET</code> feature.</p>
 
-<p>Here's the complete code:</p>
+<p>One last improvement we'll make is to skip directly to <code>offset</code>, since we know we won't find an item that fits in our page until then. Instead of pointing to the set's tail, we can simply use the <code>zslGetElementByRank</code> function. Our complete code looks like:</p>
 
 <pre data-language="c">
 #include "redis.h"
@@ -89,13 +89,14 @@ void xdiffCommand(redisClient *c) {
   zsetConvert(zobj, REDIS_ENCODING_SKIPLIST);
   zset = zobj->ptr;
   diff = (dict*)sobj->ptr;
-  zskiplist *zsl = zset->zsl;
-  zskiplistNode *ln = zsl->tail;
+
+  long zsetlen = dictSize(zset->dict);
+  zskiplistNode *ln = zslGetElementByRank(zset->zsl, zsetlen - offset);
 
   replylen = addDeferredMultiBulkLength(c);
   while(ln != NULL) {
     robj *item = ln->obj;
-    if (dictFind(diff, item) == NULL &amp;&amp; found++ >= offset) {
+    if (dictFind(diff, item) == NULL) {
       addReplyBulk(c, item);
       if (++added == count) { break; }
     }
