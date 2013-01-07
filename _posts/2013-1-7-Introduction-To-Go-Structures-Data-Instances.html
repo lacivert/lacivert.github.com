@@ -73,7 +73,7 @@ larry := &Unicorn{
 var vampires = 43
 </pre>
 
-<p>So far we've only dealt with data fields. What about methods? Go let's us attach methods to our structures with a simple syntax:</p>
+<p>So far we've only dealt with data fields. What about methods? Go lets us attach methods to our structures with a simple syntax:</p>
 
 <pre data-language=go>
 func (u *Unicorn) Sleep(years int) (ok bool) {
@@ -81,7 +81,7 @@ func (u *Unicorn) Sleep(years int) (ok bool) {
 }
 </pre>
 
-<p>The parts of this deceleration are a little different than what you are probably used to. First though, note that functions follow the same casing convention. Therefore, this function will be visible outside the package (in other word, it's public). About the order. the return value is at the end, the arguments in the middle, and the type it's attached to at the start.</p>
+<p>The parts of this deceleration are a little different than what you are probably used to. First though, note that functions follow the same casing convention. Therefore, this function will be visible outside the package (in other word, it's public). About the order, the return value is at the end, the arguments in the middle, and the type it's attached to at the start.</p>
 
 <p>It's possible (and common) to declare a function that isn't attached to a specific type or doesn't return a value:</p>
 
@@ -115,7 +115,7 @@ larry.Rename("sally")
 
 <p>After calling <code>Rename</code>, <code>larry.Name</code> remains <em>Larry</em> because only a copy of our structure was passed. As is, <code>Rename</code> is useless and should declared as <code>(u *Unicorn)</code></p>
 
-<p>A final, slightly off topic, note. Early we saw that our return value was named. This is optional, but useful. In the above example, the <code>ok</code> variable is available for us to assign to without having to declare it explicitly within the function. On top of that, Go supports multiple return values:</p>
+<p>A final, slightly off topic, note. Earlier we saw that our return value was named. This is optional, but useful. In the above example, the <code>ok</code> variable is available for us to assign to without having to declare it explicitly within the function. On top of that, Go supports multiple return values:</p>
 
 <pre data-language=go>
 func png(file *os.File) (width int, height int) {
