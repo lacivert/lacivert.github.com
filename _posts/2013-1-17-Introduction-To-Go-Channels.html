@@ -7,7 +7,7 @@ title: "Introduction To Go: Channels"
 
 <p>A channel is used to communicate between goroutines. They can be used to signal or pass data around. Anyone familiar with traditional thread-based programming knows the pain associated with sharing data. You have to carefully manage locks around data, avoiding deadlocks and avoiding serializing your threads. With channels, only one goroutine ever has access to a piece of data at a given time. There's no locking, only communication.</p>
 
-<p>Consider a phone conversation. It can be difficult to coordinate who should talk, especially as more people get added to the conversation. It isn't uncommon for two people to speak at once. Conversly, it also isn't uncommon for one person to do all the talking and not let the others participate. This, to me, what thread-based programming is like. Channels on the other hand, are more like passing notes in class. Coordination is strictly controlled by the act of passing the note to someone. There's simply no way for you and your friend to write on the same note at the same time.</p>
+<p>Consider a phone conversation. It can be difficult to coordinate who should talk, especially as more people get added to the conversation. It isn't uncommon for two people to speak at once. Conversly, it also isn't uncommon for one person to do all the talking and not let the others participate. This, to me, is what thread-based programming is like. Channels on the other hand, are more like passing notes in class. Coordination is strictly controlled by the act of passing the note to someone. There's simply no way for you and your friend to write on the same note at the same time.</p>
 
 <p>Like arrays and maps, channels are created with <code>make</code>. A channel is created to pass a specific type. For example, we can create a channel of integers like so:</p>
 
@@ -31,7 +31,7 @@ func Run() {
 }
 </pre>
 
-<p>Lot's of new stuff here. The idea behind the code is to intercept the interupt signal (ctrl-c) and delay termination by 30 seconds. The first thing to understand is that <code>ListenAndServe</code> is blocking: it's starts the HTTP server and listens for incoming connections in an endless loop.</p>
+<p>Lot's of new stuff here. The idea behind the code is to intercept the interupt signal (ctrl-c) and delay termination by 30 seconds. The first thing to understand is that <code>ListenAndServe</code> is blocking: it starts the HTTP server and listens for incoming connections in an endless loop.</p>
 
 <p>Before we block, we do three things. First, we define a channel which can pass an <code>os.Signal</code> around. Next we use the signal's <code>Notify</code> method to intecept a singal. When SIGINT is received, our channel will be activated. Finally, we run a goroutine (notice the <code>()</code> at the end of our <code>func</code>, which is actually executing the code - familiar to any javascript coder). Within our function, we block waiting for message to be received. When it is, our goroutine continues to execute (going to sleep before exiting).</p>
 
