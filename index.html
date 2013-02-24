@@ -11,4 +11,5 @@ p{float:right}ul{list-style:none;padding:0}a,li{padding:15px}
 </style>
 <p><a href=mailto:yasin@mafya.com>email</a><a href=atom.xml>rss</a></p>
 <h1>lacivert is the most beautiful color</h1>
+<h2>isn't it?</h2>
 <ul>{% for post in site.posts %}<li>{{ post.date | date_to_string }}<a href={{ post.url | replace_first: '/', ''}}>{{ post.title | escape}}</a>{% endfor %}</ul>
