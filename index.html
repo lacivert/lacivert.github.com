@@ -2,13 +2,13 @@
 published: true
 ---
 <!DOCTYPE html>
-<title>Karl Seguin</title>
+<title>lacivert</title>
 <meta name=description content=code,write,think>
 <link href=atom.xml rel=alternate type=application/atom+xml>
 <style>
-body{width:920px;margin:auto;font-family:verdana}a{color:#047}a:hover{color:#c51}
+body{width:920px;margin:auto;font-family:'Calibri Verdana'}a{color:#047}a:hover{color:#c51}
 p{float:right}ul{list-style:none;padding:0}a,li{padding:15px}
 </style>
-<p><a href=mailto:karl@openmymind.net>email</a><a href=atom.xml>rss</a></p>
-<h1>Hello.</h1>
+<p><a href=mailto:yasin@mafya.com>email</a><a href=atom.xml>rss</a></p>
+<h1>lacivert.</h1>
 <ul>{% for post in site.posts %}<li>{{ post.date | date_to_string | replace: '01 ', '1 ' | replace: '02 ', '2 ' | replace: '03 ', '3 ' | replace: '04 ', '4 ' | replace: '05 ', '5 ' | replace: '06 ', '6 ' | replace: '07 ', '7 ' | replace: '08 ', '8 ' | replace: '09 ', '9 ' }}<a href={{ post.url | replace_first: '/', ''}}>{{ post.title | escape}}</a>{% endfor %}</ul>
